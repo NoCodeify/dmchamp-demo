@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageSquare, TrendingUp, Users, CheckCircle, ArrowRight, Play, Shield, RotateCcw, AlertCircle, Gamepad2 } from 'lucide-react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import Footer from './components/Footer';
 
 
 const DMChampFunnel = () => {
@@ -546,6 +547,8 @@ const DMChampFunnel = () => {
           </div>
         </div>
 
+        <Footer />
+
         <style dangerouslySetInnerHTML={{
           __html: `
             @keyframes fadeIn {
@@ -839,6 +842,8 @@ const DMChampFunnel = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };
