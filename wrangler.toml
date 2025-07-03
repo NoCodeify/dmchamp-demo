@@ -1,5 +1,4 @@
 name = "dmchamp-demo"
-main = "src/index.js"
 compatibility_date = "2025-07-03"
 
 [site]
