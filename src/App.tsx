@@ -232,7 +232,7 @@ const DMChampFunnel = () => {
             
             <p className="text-xl text-gray-300 leading-relaxed mb-12 max-w-4xl mx-auto">
               En ik ga je exact laten zien hoe ze het doen. Maar eerst moet ik je vertellen waarom dit überhaupt bestaat. 
-              <span className="text-purple-300"> Want als jij bent zoals ik was, ben je waarschijnlijk ziek en moe van alle online business modellen die je het gevoel geven dat je je waarden compromitteert.</span>
+              <span className="text-purple-300"> Want als jij bent zoals ik was, heb je waarschijnlijk al van alles geprobeerd - dropshipping, crypto, cursussen - en ben je nog steeds op zoek naar iets dat écht werkt.</span>
             </p>
 
             {/* Real $40K conversation demo */}
@@ -329,7 +329,7 @@ const DMChampFunnel = () => {
                 <div className="space-y-4 text-gray-300">
                   <p className="text-sm leading-relaxed">
                     Mijn journey begon op de vreemdste manier mogelijk. Toen ik 14 was, was ik die jongen die Counter-Strike video edits maakte, probeerde wat geld te verdienen online. 
-                    <span className="text-red-400"> Niet bepaald het meest nobele begin, ik weet het.</span>
+                    <span className="text-red-400"> Niet bepaald een traditionele ondernemersstart.</span>
                   </p>
                   
                   <p className="text-sm leading-relaxed">
@@ -790,7 +790,7 @@ const DMChampFunnel = () => {
           
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-              <div className="text-2xl font-bold text-purple-400 mb-2">€67</div>
+              <div className="text-2xl font-bold text-purple-400 mb-2">€47</div>
               <div className="text-white text-sm">Per maand</div>
               <div className="text-xs text-gray-400 mt-1">Community toegang</div>
             </div>
@@ -806,17 +806,36 @@ const DMChampFunnel = () => {
             </div>
           </div>
 
-          <button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transform hover:scale-105 transition-all shadow-2xl mb-4">
-            Ja, Ik Wil De Tweede Partner Worden
-          </button>
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 mb-6">
+            <div className="text-center">
+              <div className="text-lg font-bold text-white mb-2">Klaar om te starten?</div>
+              <div className="text-gray-300 text-sm mb-4">Stuur me het woord hieronder via WhatsApp:</div>
+              
+              <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 mb-4">
+                <div className="text-3xl font-black text-white mb-2">PARTNER</div>
+                <div className="text-xs text-gray-300">Kopieer en plak dit woord in WhatsApp</div>
+              </div>
+              
+              <a 
+                href="https://wa.me/31616834455?text=PARTNER" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white hover:text-white font-bold py-4 px-8 rounded-2xl text-lg transform hover:scale-105 transition-all shadow-2xl mb-4"
+              >
+                📱 Open WhatsApp & Stuur "PARTNER"
+              </a>
+            </div>
+          </div>
           
           <p className="text-sm text-purple-200 mb-4">
             Eerlijk: Ik verwacht dat de meeste mensen dit niet zullen doen. En dat is prima.
           </p>
           
           <div className="text-gray-400 text-sm">
-            Vragen? Stuur me een bericht<br/>
-            (Alleen serieuze vragen graag - geen tijdverspillers)
+            Na je bericht krijg je direct toegang tot:<br/>
+            • Complete partner onboarding<br/>
+            • Whitelabel software demo<br/>
+            • Eerste maand strategie call
           </div>
         </div>
       </div>
