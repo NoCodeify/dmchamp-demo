@@ -272,7 +272,7 @@ const DMChampFunnel = () => {
 
                   <div 
                     ref={chatContainerRef}
-                    className="space-y-1 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
+                    className="space-y-1 max-h-64 overflow-y-auto hide-scrollbar"
                   >
                     {conversationFlow.slice(0, conversationStep + 1).map((msg, index) => {
                       const prevMsg = index > 0 ? conversationFlow[index - 1] : null;
