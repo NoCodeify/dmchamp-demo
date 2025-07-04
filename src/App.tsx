@@ -4,6 +4,17 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import Footer from './components/Footer';
 
+// Meta Pixel utilities
+declare global {
+  interface Window {
+    fbq: (action: string, event: string, params?: Record<string, unknown>, options?: Record<string, unknown>) => void;
+  }
+}
+
+const generateEventId = () => {
+  return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+};
+
 
 const DMChampFunnel = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,6 +22,12 @@ const DMChampFunnel = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState<string | undefined>('+31');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [eventId, setEventId] = useState<string>('');
+
+  // Generate unique event ID for deduplication
+  useEffect(() => {
+    setEventId(generateEventId());
+  }, []);
   
 
   
@@ -183,6 +200,18 @@ const DMChampFunnel = () => {
     if (!email || !name || !phone || (phone && !isValidPhoneNumber(phone))) return;
     setIsSubmitting(true);
     
+    // Track Meta Pixel Lead event
+    if (window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: 'DM Champ Partner Application',
+        content_category: 'Lead Form',
+        value: 47.00,
+        currency: 'EUR'
+      }, {
+        eventID: eventId
+      });
+    }
+    
     // Submit to Formspark
     try {
       const response = await fetch('https://submit-form.com/3lpsJaFF8', {
@@ -194,7 +223,9 @@ const DMChampFunnel = () => {
           name: name,
           email: email,
           phone: phone,
-          source: 'DM Champ Real Story Funnel'
+          source: 'DM Champ Real Story Funnel',
+          meta_event_id: eventId, // For server-side conversion API deduplication
+          meta_pixel_id: '1533692663974167' // For server-side conversion API
         }),
       });
       
@@ -462,6 +493,10 @@ const DMChampFunnel = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
+                  {/* Hidden fields for Meta Conversion API deduplication */}
+                  <input type="hidden" name="meta_event_id" value={eventId} />
+                  <input type="hidden" name="meta_pixel_id" value="1533692663974167" />
+                  
                   <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-purple-500/50 transition-all">
                     <input
                       type="text"
