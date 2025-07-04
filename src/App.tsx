@@ -15,6 +15,67 @@ const generateEventId = () => {
   return Date.now().toString() + Math.random().toString(36).substr(2, 9);
 };
 
+// Utility to get UTM parameters from URL
+const getUTMParameters = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return {
+    utm_source: urlParams.get('utm_source') || '',
+    utm_medium: urlParams.get('utm_medium') || '',
+    utm_campaign: urlParams.get('utm_campaign') || '',
+    utm_term: urlParams.get('utm_term') || '',
+    utm_content: urlParams.get('utm_content') || '',
+  };
+};
+
+// Utility to get Facebook Click ID from URL
+const getFacebookClickId = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('fbclid') || '';
+};
+
+// Utility to get Facebook Browser ID from cookies
+const getFacebookBrowserId = () => {
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === '_fbp') {
+      return value;
+    }
+  }
+  return '';
+};
+
+// Utility to get client IP address
+const getClientIP = async () => {
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    return data.ip || '';
+  } catch (error) {
+    console.warn('Could not fetch IP address:', error);
+    return '';
+  }
+};
+
+// Utility to get comprehensive tracking data
+const getTrackingData = async () => {
+  const utmParams = getUTMParameters();
+  const fbc = getFacebookClickId();
+  const fbp = getFacebookBrowserId();
+  const clientIP = await getClientIP();
+  
+  return {
+    ...utmParams,
+    fbc,
+    fbp,
+    client_ip_address: clientIP,
+    client_user_agent: navigator.userAgent,
+    page_url: window.location.href,
+    page_referrer: document.referrer,
+    page_title: document.title,
+  };
+};
+
 
 const DMChampFunnel = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,10 +84,16 @@ const DMChampFunnel = () => {
   const [phone, setPhone] = useState<string | undefined>('+31');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [eventId, setEventId] = useState<string>('');
+  const [trackingData, setTrackingData] = useState<Record<string, unknown>>({});
 
-  // Generate unique event ID for deduplication
+  // Generate unique event ID and collect tracking data
   useEffect(() => {
     setEventId(generateEventId());
+    
+    // Collect tracking data on component mount
+    getTrackingData().then(data => {
+      setTrackingData(data);
+    });
   }, []);
   
 
@@ -200,19 +267,34 @@ const DMChampFunnel = () => {
     if (!email || !name || !phone || (phone && !isValidPhoneNumber(phone))) return;
     setIsSubmitting(true);
     
-    // Track Meta Pixel Lead event
+    // Track Meta Pixel Lead event with comprehensive attribution data
     if (window.fbq) {
       window.fbq('track', 'Lead', {
         content_name: 'DM Champ Partner Application',
         content_category: 'Lead Form',
         value: 47.00,
-        currency: 'EUR'
+        currency: 'EUR',
+        // Add attribution data for better tracking
+        external_id: eventId,
+        fbc: trackingData.fbc || '',
+        fbp: trackingData.fbp || '',
+        client_ip_address: trackingData.client_ip_address || '',
+        client_user_agent: trackingData.client_user_agent || '',
+        page_url: trackingData.page_url || '',
+        page_referrer: trackingData.page_referrer || '',
+        custom_data: {
+          utm_source: trackingData.utm_source || '',
+          utm_medium: trackingData.utm_medium || '',
+          utm_campaign: trackingData.utm_campaign || '',
+          utm_term: trackingData.utm_term || '',
+          utm_content: trackingData.utm_content || '',
+        }
       }, {
         eventID: eventId
       });
     }
     
-    // Submit to Formspark
+    // Submit to Formspark with comprehensive tracking data
     try {
       const response = await fetch('https://submit-form.com/3lpsJaFF8', {
         method: 'POST',
@@ -224,8 +306,14 @@ const DMChampFunnel = () => {
           email: email,
           phone: phone,
           source: 'DM Champ Real Story Funnel',
-          meta_event_id: eventId, // For server-side conversion API deduplication
-          meta_pixel_id: '1533692663974167' // For server-side conversion API
+          // Meta conversion API data
+          meta_event_id: eventId,
+          meta_pixel_id: '1533692663974167',
+          // Attribution data
+          ...trackingData,
+          // Additional tracking
+          submitted_at: new Date().toISOString(),
+          page_title: document.title,
         }),
       });
       
@@ -493,9 +581,26 @@ const DMChampFunnel = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
-                  {/* Hidden fields for Meta Conversion API deduplication */}
+                  {/* Hidden fields for Meta Conversion API deduplication and attribution */}
                   <input type="hidden" name="meta_event_id" value={eventId} />
                   <input type="hidden" name="meta_pixel_id" value="1533692663974167" />
+                  
+                  {/* UTM and attribution data */}
+                  <input type="hidden" name="utm_source" value={trackingData.utm_source as string || ''} />
+                  <input type="hidden" name="utm_medium" value={trackingData.utm_medium as string || ''} />
+                  <input type="hidden" name="utm_campaign" value={trackingData.utm_campaign as string || ''} />
+                  <input type="hidden" name="utm_term" value={trackingData.utm_term as string || ''} />
+                  <input type="hidden" name="utm_content" value={trackingData.utm_content as string || ''} />
+                  
+                  {/* Facebook tracking IDs */}
+                  <input type="hidden" name="fbc" value={trackingData.fbc as string || ''} />
+                  <input type="hidden" name="fbp" value={trackingData.fbp as string || ''} />
+                  
+                  {/* Client data */}
+                  <input type="hidden" name="client_ip_address" value={trackingData.client_ip_address as string || ''} />
+                  <input type="hidden" name="client_user_agent" value={trackingData.client_user_agent as string || ''} />
+                  <input type="hidden" name="page_url" value={trackingData.page_url as string || ''} />
+                  <input type="hidden" name="page_referrer" value={trackingData.page_referrer as string || ''} />
                   
                   <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-purple-500/50 transition-all">
                     <input
