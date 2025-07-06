@@ -836,7 +836,7 @@ const DMChampFunnel = () => {
         <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">
           <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden aspect-video mb-6 border border-white/10">
             <iframe
-              src="https://embed.voomly.com/embed/assets/embed.html?videoId=gty7zxXCEGo7P0VZHjw08utoCXW8BFtvpFNbePUhaaKaXhQMW&videoRatio=1.775926&type=v&skinColor=rgba(37%2C211%2C102%2C1)"
+              src="https://embed.voomly.com/embed/assets/embed.html?videoId=BojbJA4KXK7IxxxxCBGQr5raGMDBEyGhmN5UxgIoXJLocH86Z&videoRatio=1.775926&type=v&skinColor=rgba(37%2C211%2C102%2C1)"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
