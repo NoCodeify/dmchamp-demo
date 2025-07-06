@@ -834,18 +834,15 @@ const DMChampFunnel = () => {
 
         {/* Authentic story-driven VSL */}
         <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">
-          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden aspect-video mb-6 border border-white/10">
+          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.775926' }}>
             <iframe
               src="https://embed.voomly.com/embed/assets/embed.html?videoId=BojbJA4KXK7IxxxxCBGQr5raGMDBEyGhmN5UxgIoXJLocH86Z&videoRatio=1.775926&type=v&skinColor=rgba(37%2C211%2C102%2C1)"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              width="100%"
-              height="100%"
+              className="absolute inset-0 w-full h-full rounded-2xl"
               style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: '10px'
+                border: 'none'
               }}
             />
           </div>
