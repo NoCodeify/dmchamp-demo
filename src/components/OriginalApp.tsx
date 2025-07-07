@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageSquare, TrendingUp, Users, CheckCircle, ArrowRight, Play, Shield, RotateCcw, AlertCircle, Gamepad2 } from 'lucide-react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import Footer from './components/Footer';
+import Footer from './Footer';
 
 // Meta Pixel utilities
 declare global {
@@ -77,7 +77,7 @@ const getTrackingData = async () => {
 };
 
 
-const DMChampFunnel = () => {
+const OriginalDMChampFunnel = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -98,6 +98,169 @@ const DMChampFunnel = () => {
   
 
   
+  // Interactive conversation simulator
+  const [conversationStep, setConversationStep] = useState(0);
+  const [isSimulatorRunning, setIsSimulatorRunning] = useState(false);
+  const chatContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // Real conversation from FueGenix - shortened version
+  const conversationFlow = [
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Hoi, ik zou graag meer willen weten",
+      timestamp: "21:40"
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Ik wil een idee krijgen van de kosten",
+      timestamp: "21:40"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp', 
+      message: "Hallo! Ik ben Sohaib, Dr. Munib's assistent",
+      timestamp: "21:41",
+      typing: true
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Mag ik je naam? En kun je delen wat je specifiek interesseert aan FueGenix?",
+      timestamp: "21:41",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Ik heb goede reviews gelezen van Dr. Munib",
+      timestamp: "21:45"
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Maar ik wil zeker weten dat de kosten haalbaar zijn voor mij",
+      timestamp: "21:45"
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Ik heb een andere kliniek in Istanbul gezien voor €3.000",
+      timestamp: "21:45"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Bij FueGenix is de startprijs voor een transplantatie €40.000",
+      timestamp: "21:51",
+      typing: true
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Valt dit binnen je budget?",
+      timestamp: "21:51",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Eerlijk gezegd helaas niet. Het maximum wat ik kan is €10.000",
+      timestamp: "21:54"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Ik begrijp het. Als je situatie verandert, neem gerust contact op",
+      timestamp: "21:56",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Zou het mogelijk zijn om mijn zaak aan Dr. Munib voor te leggen?",
+      timestamp: "21:57"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Onze prijsstructuur is vast vanwege de hoge vraag en kwaliteit",
+      timestamp: "21:58",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "[3 dagen later] Ik heb nog een vraag...",
+      timestamp: "23:05"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Fijn om weer van je te horen! Wat wil je weten?",
+      timestamp: "23:06",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "Is er een beoordeling om te zien of ik überhaupt kwalificeer?",
+      timestamp: "23:07"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Ja, we doen virtuele consulten via Zoom voor €1.000",
+      timestamp: "23:12",
+      typing: true
+    },
+    {
+      type: 'customer',
+      platform: 'whatsapp',
+      message: "[1 week later] Ik heb de betaling voltooid",
+      timestamp: "21:57"
+    },
+    {
+      type: 'ai',
+      platform: 'whatsapp',
+      message: "Dank je! Dr. Munib zal binnen 1-2 weken contact opnemen",
+      timestamp: "21:59",
+      typing: true,
+      isBooking: true
+    }
+  ];
+
+  // Auto-scroll chat to bottom
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [conversationStep]);
+
+  const startSimulator = () => {
+    setIsSimulatorRunning(true);
+    setConversationStep(0);
+    
+    const interval = setInterval(() => {
+      setConversationStep(prev => {
+        if (prev >= conversationFlow.length - 1) {
+          setIsSimulatorRunning(false);
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 2500);
+  };
+
+  const resetSimulator = () => {
+    setConversationStep(0);
+    setIsSimulatorRunning(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -177,46 +340,224 @@ const DMChampFunnel = () => {
         <div className="relative max-w-6xl mx-auto px-4 py-12">
           {/* Real story-driven hero */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-red-500/20 backdrop-blur-xl border border-red-500/50 rounded-full px-6 py-3 mb-8 shadow-2xl">
-              <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse mr-3 flex-shrink-0"></div>
-              <span className="text-white font-medium text-center">WAARSCHUWING: Dit bericht wordt binnenkort offline gehaald</span>
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-6 py-3 mb-8 shadow-2xl">
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-3"></div>
+              <span className="text-white font-medium">Van Counter-Strike video editor naar €100K software business</span>
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-black leading-tight mb-8 text-white">
-              Ik Maak Een Paar Mensen
-              <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent animate-gradient"> €2.500/Maand Rijker</span>
+              Iemand Verdient €2.500/Maand
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient"> Met Mijn Software</span>
             </h1>
             
             <p className="text-xl text-gray-300 leading-relaxed mb-12 max-w-4xl mx-auto">
-              <span className="text-red-300 font-bold">Brutaal eerlijk:</span> Terwijl jij dit leest, verdient mijn eerste partner €2.500/maand met software die ik hem heb gegeven.
-              <span className="text-yellow-300"> En ja, ik ga dit nog een paar keer doen voor de juiste mensen.</span>
+              En ik ga je exact laten zien hoe ze het doen. Maar eerst moet ik je vertellen waarom dit überhaupt bestaat. 
+              <span className="text-purple-300"> Want als jij bent zoals ik was, heb je waarschijnlijk al van alles geprobeerd - dropshipping, crypto, cursussen - en ben je nog steeds op zoek naar iets dat écht werkt.</span>
             </p>
+
+            {/* Real $40K conversation demo */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-white">Deze echte conversatie genereerde €40K+ omzet</h3>
+                  <div className="flex space-x-3">
+                    <button
+                      onClick={startSimulator}
+                      disabled={isSimulatorRunning}
+                      className="bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 text-purple-300 px-3 py-1.5 rounded-lg transition-all disabled:opacity-50 flex items-center text-sm"
+                    >
+                      <Play className="w-3 h-3 mr-1" />
+                      {isSimulatorRunning ? 'Speelt af...' : 'Bekijk'}
+                    </button>
+                    <button
+                      onClick={resetSimulator}
+                      className="bg-white/10 hover:bg-white/20 border border-white/20 text-gray-300 px-3 py-1.5 rounded-lg transition-all flex items-center text-sm"
+                    >
+                      <RotateCcw className="w-3 h-3 mr-1" />
+                      Reset
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-4 border border-white/10 min-h-[350px]">
+                  <div className="flex items-center mb-4">
+                    <div className="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center mr-2">
+                      <MessageSquare className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-white text-sm">WhatsApp Business - FueGenix</span>
+                    <div className="ml-auto text-xs text-gray-400">
+                      Haartransplantatie kliniek
+                    </div>
+                  </div>
+
+                  <div 
+                    ref={chatContainerRef}
+                    className="space-y-1 max-h-64 overflow-y-auto hide-scrollbar"
+                  >
+                    {conversationFlow.slice(0, conversationStep + 1).map((msg, index) => {
+                      const prevMsg = index > 0 ? conversationFlow[index - 1] : null;
+                      const isGrouped = prevMsg && prevMsg.type === msg.type;
+                      
+                      return (
+                        <div key={index} className={`flex ${msg.type === 'ai' ? 'justify-end' : 'justify-start'} animate-fadeIn ${isGrouped ? 'mt-1' : 'mt-3'}`}>
+                          <div className={`max-w-xs px-3 py-2 rounded-2xl text-sm ${
+                            msg.type === 'ai' 
+                              ? 'bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-left' 
+                              : 'bg-white/20 backdrop-blur-xl text-gray-100 border border-white/20 text-left'
+                          }`}>
+                            {msg.typing && index === conversationStep && (
+                              <div className="flex items-center mb-1">
+                                <div className="animate-pulse text-xs text-purple-200">AI typt...</div>
+                              </div>
+                            )}
+                            <p className="leading-relaxed">{msg.message}</p>
+                            <div className="text-xs opacity-60 mt-1">{msg.timestamp}</div>
+                            {msg.isBooking && (
+                              <div className="mt-2 bg-white/20 backdrop-blur-xl rounded-lg p-2 text-center border border-white/30">
+                                <div className="text-green-300 font-semibold text-xs">$1K Consultatie → $40K Procedure</div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {!isSimulatorRunning && conversationStep >= conversationFlow.length - 1 && (
+                    <div className="mt-4 text-center">
+                      <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/50 rounded-xl p-3">
+                        <div className="text-lg font-bold text-purple-300 mb-1">€40,000+ Procedure Geboekt</div>
+                        <div className="text-xs text-gray-300">"Budget te laag" lead → Betalende klant in 14 dagen</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left: Simple opportunity */}
+            {/* Left: Real Sohaib journey */}
             <div className="space-y-6">
-              {/* The brutal truth */}
-              <div className="bg-red-500/10 backdrop-blur-3xl border border-red-500/30 rounded-3xl p-6 shadow-2xl">
-                <h3 className="text-xl font-bold text-white mb-4">De Harde Waarheid</h3>
+              {/* Real story beginning */}
+              <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                  <Gamepad2 className="w-5 h-5 mr-2 text-purple-400" />
+                  Mijn Naam is Sohaib
+                </h3>
                 
                 <div className="space-y-4 text-gray-300">
                   <p className="text-sm leading-relaxed">
-                    <span className="text-red-300 font-bold">Feit:</span> Bedrijven verliezen dagelijks duizenden euro's omdat ze te langzaam reageren op klanten.
+                    Mijn journey begon op de vreemdste manier mogelijk. Toen ik 14 was, was ik die jongen die Counter-Strike video edits maakte, probeerde wat geld te verdienen online. 
+                    <span className="text-red-400"> Niet bepaald een traditionele ondernemersstart.</span>
                   </p>
                   
-                  <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4">
-                    <p className="text-green-300 text-sm font-medium">
-                      Mijn software lost dat op. Mijn partner verdient €2.500/maand door het te verkopen.
-                    </p>
+                  <p className="text-sm leading-relaxed">
+                    Daarna probeerde ik alles. En met alles bedoel ik <span className="text-purple-300">echt alles:</span>
+                  </p>
+                  
+                  <div className="space-y-2 text-xs">
+                    <div className="flex items-center p-2 bg-white/5 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                      <span><strong>Dropshipping:</strong> €15K eerste maand en daarna niets</span>
+                    </div>
+                    <div className="flex items-center p-2 bg-white/5 rounded-lg">
+                      <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                      <span><strong>Crypto:</strong> Verloor geen geld, maar kreeg constante stress</span>
+                    </div>
+                    <div className="flex items-center p-2 bg-white/5 rounded-lg">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                      <span><strong>9-to-5:</strong> Thuiskomen uitgeput, nauwelijks energie over</span>
+                    </div>
                   </div>
                   
                   <p className="text-sm">
-                    <span className="text-yellow-400">De keuze is simpel:</span> Jij pakt deze kans, of iemand anders doet het.
+                    Terwijl mijn vrienden carrière maakten, sprong ik van het ene naar het andere. Altijd op zoek naar die ene doorbraak. <span className="text-cyan-400">Altijd net niet.</span>
                   </p>
                 </div>
               </div>
 
+              {/* The turning point */}
+              <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                <h3 className="text-xl font-bold text-white mb-4">Toen Veranderde Alles</h3>
+                
+                <div className="space-y-4 text-gray-300">
+                  <p className="text-sm leading-relaxed">
+                    Ongeveer 5 jaar geleden kwam mijn gym partner met een idee. Hij wilde een haartransplantatie kliniek beginnen. Hij vroeg me om te helpen met de digitale kant - website, marketing, het hele pakket.
+                  </p>
+                  
+                  <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4">
+                    <p className="text-green-300 text-sm font-medium">
+                      Het werd een gigantisch succes. Voor het eerst in mijn leven was ik betrokken bij iets dat echt werkte.
+                    </p>
+                  </div>
+                  
+                  <p className="text-sm leading-relaxed">
+                    Na 2 jaar van dit succes dacht ik: "Waarom help ik niet andere klinieken ook?" Leek logisch, toch?
+                  </p>
+                  
+                  <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+                    <p className="text-red-300 text-sm font-medium">
+                      Maar hier faalde ik compleet. Deze andere klinieken konden de follow-up niet aan. Uren of dagen om te reageren. Tegen die tijd waren klanten al verder gegaan.
+                    </p>
+                  </div>
+                  
+                  <p className="text-sm">
+                    Ik zag bedrijven letterlijk geld weggooien omdat ze niet snel genoeg konden reageren op berichten.
+                  </p>
+                </div>
+              </div>
+
+              {/* Current real results */}
+              <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                <h3 className="text-xl font-bold text-white mb-4">Waar Ik Nu Sta (Echte Cijfers)</h3>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-white/10 rounded-xl border border-white/10">
+                    <span className="text-gray-300 text-sm">DM Champ jaarlijkse omzet</span>
+                    <span className="text-green-400 font-semibold text-sm">~€100.000</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-white/10 rounded-xl border border-white/10">
+                    <span className="text-gray-300 text-sm">Klanten wereldwijd</span>
+                    <span className="text-cyan-400 font-semibold text-sm">Klinieken, restaurants, winkels</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-white/10 rounded-xl border border-white/10">
+                    <span className="text-gray-300 text-sm">Eerste whitelabel partner</span>
+                    <span className="text-purple-400 font-semibold text-sm">€2.500/maand</span>
+                  </div>
+                </div>
+
+                <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
+                  <div className="flex items-start">
+                    <AlertCircle className="w-4 h-4 text-yellow-400 mt-0.5 mr-2 flex-shrink-0" />
+                    <p className="text-yellow-300 text-xs">
+                      2 jaar ontwikkeling. Computer Engineering achtergrond. Dit is geen overnight success verhaal.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Honest skepticism */}
+              <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                <h4 className="text-white font-semibold mb-3">Je Denkt Waarschijnlijk...</h4>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>"Waarom zou hij dit delen als het zo goed werkt?"</span>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>"1 succesvolle partner is geen bewijs"</span>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>"Dit klinkt te goed om waar te zijn"</span>
+                  </div>
+                </div>
+                <p className="text-purple-300 text-sm mt-4 font-medium">
+                  Fair enough. Ik zou hetzelfde denken. Daarom ga ik je mijn hele verhaal vertellen en exact laten zien hoe dit werkt...
+                </p>
+              </div>
             </div>
 
             {/* Right: Honest lead capture */}
@@ -227,15 +568,15 @@ const DMChampFunnel = () => {
                     <span className="text-purple-300 font-medium text-sm">Het Complete Verhaal</span>
                   </div>
                   
-                  <h2 className="text-2xl font-bold text-white mb-3">€2.500/Maand. Bewezen. Echt.</h2>
+                  <h2 className="text-2xl font-bold text-white mb-3">Van Counter-Strike naar €100K Business</h2>
                   <p className="text-gray-300 text-sm mb-4">
-                    <strong>Geen bullshit. Geen valse beloftes.</strong> Ik laat je de bankafschriften zien van mijn partner.
+                    Hoe ik in 2 jaar een chat automation software bouwde die nu €100K/jaar maakt (en waarom ik nu partners zoek)
                   </p>
 
-                  <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-xl border border-red-500/50 rounded-2xl p-4 mb-4">
-                    <div className="text-2xl font-bold text-white mb-1">BEPERKTE PLEKKEN</div>
-                    <div className="text-xs text-gray-400">Nog maar een paar partners</div>
-                    <div className="text-red-400 font-semibold text-sm">Daarna definitief gestopt</div>
+                  <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-purple-500/50 rounded-2xl p-4 mb-4">
+                    <div className="text-2xl font-bold text-white mb-1">20 Minuten</div>
+                    <div className="text-xs text-gray-400">Mijn complete journey + live demo</div>
+                    <div className="text-purple-400 font-semibold text-sm">Alleen voor serieuze mensen</div>
                   </div>
                 </div>
 
@@ -310,7 +651,7 @@ const DMChampFunnel = () => {
                       </div>
                     ) : (
                       <>
-                        LAAT ZIEN DAT HET ECHT IS
+                        Vertel Me Het Complete Verhaal
                         <ArrowRight className="w-4 h-4 ml-2 inline" />
                       </>
                     )}
@@ -327,16 +668,16 @@ const DMChampFunnel = () => {
                     <div className="text-white font-medium mb-2 text-sm">Wat je zult leren:</div>
                     <div className="space-y-1 text-xs text-gray-300">
                       <div className="flex items-center">
-                        <CheckCircle className="w-3 h-3 mr-2 text-red-400" />
-                        <span><strong>Bankafschriften</strong> van €2.500/maand partner</span>
+                        <CheckCircle className="w-3 h-3 mr-2 text-purple-400" />
+                        <span>Hoe ik van mislukkingen naar $100K business ging</span>
                       </div>
                       <div className="flex items-center">
-                        <CheckCircle className="w-3 h-3 mr-2 text-red-400" />
-                        <span><strong>Exacte blueprint</strong> die hij gebruikt</span>
+                        <CheckCircle className="w-3 h-3 mr-2 text-purple-400" />
+                        <span>Waarom één partner €2.500/maand verdient</span>
                       </div>
                       <div className="flex items-center">
-                        <CheckCircle className="w-3 h-3 mr-2 text-red-400" />
-                        <span><strong>Waarom dit</strong> de laatste keer is</span>
+                        <CheckCircle className="w-3 h-3 mr-2 text-purple-400" />
+                        <span>De eerlijke tijdlijn en investeringen</span>
                       </div>
                     </div>
                   </div>
@@ -644,4 +985,4 @@ const DMChampFunnel = () => {
   );
 };
 
-export default DMChampFunnel;
+export default OriginalDMChampFunnel;

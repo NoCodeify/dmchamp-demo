@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900/50 backdrop-blur-xl border-t border-white/10 mt-16">
       <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center">
             <img 
               src="/DM_Champ_Logo_Black.png" 
