@@ -237,6 +237,16 @@ const DMChampFunnel = () => {
                     <div className="text-xs text-gray-400">Nog maar een paar partners</div>
                     <div className="text-red-400 font-semibold text-sm">Daarna definitief gestopt</div>
                   </div>
+
+                  {/* Thumbnail Image */}
+                  <div className="mb-4">
+                    <img 
+                      src="/thumbnail.avif" 
+                      alt="Preview" 
+                      className="w-full rounded-2xl shadow-lg border border-white/10"
+                      style={{ aspectRatio: '16/9' }}
+                    />
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
