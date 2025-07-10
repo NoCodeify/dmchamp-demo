@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, ArrowRight, Shield } from 'lucide-react';
+import { TrendingUp, Users, CheckCircle, ArrowRight, Shield, AlertCircle, Gamepad2 } from 'lucide-react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import Footer from './components/Footer';
@@ -474,6 +474,184 @@ const DMChampFunnel = () => {
       </div>
     );
   }
+
+  // Page 2: Full honest VSL based on real script
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-4 py-16">
+        {/* Honest VSL Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-6 py-3 mb-8 shadow-2xl">
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse mr-3"></div>
+            <span className="text-white font-medium">Hoi {name}, hier is waarom dit video bestaat...</span>
+          </div>
+          
+            <h1 className="text-4xl lg:text-5xl font-black mb-6 text-white">
+            Van Counter-Strike Video Editor naar
+            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"> €100K Software Business</span>
+          </h1>
+          
+          <p className="text-xl text-gray-300 mb-8">
+            Mijn complete journey, waarom ik dit deel, en hoe jij de tweede succesvolle partner kunt worden
+          </p>
+        </div>
+
+        {/* Authentic story-driven VSL */}
+        <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">
+          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.775926' }}>
+            <iframe
+              src="https://embed.voomly.com/embed/assets/embed.html?videoId=BojbJA4KXK7IxxxxCBGQr5raGMDBEyGhmN5UxgIoXJLocH86Z&videoRatio=1.775926&type=v&skinColor=rgba(37%2C211%2C102%2C1)"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full rounded-2xl"
+              style={{
+                border: 'none'
+              }}
+            />
+          </div>
+
+          <div className="text-center">
+            <p className="text-gray-300 text-lg mb-4">
+              Geen verkoop tactieken. Geen nep urgentie. Gewoon mijn verhaal en waarom ik nu een tweede partner zoek.
+            </p>
+            <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
+              <div className="flex items-center">
+                <Gamepad2 className="w-4 h-4 mr-2 text-purple-400" />
+                <span>Counter-Strike start</span>
+              </div>
+              <div className="flex items-center">
+                <TrendingUp className="w-4 h-4 mr-2 text-cyan-400" />
+                <span>€100K/jaar business</span>
+              </div>
+              <div className="flex items-center">
+                <Users className="w-4 h-4 mr-2 text-pink-400" />
+                <span>1 succesvolle partner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Brutal honesty section */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+              <CheckCircle className="w-5 h-5 mr-2 text-green-400" />
+              Dit IS Voor Jou Als:
+            </h3>
+            <div className="space-y-3 text-sm text-gray-300">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je hebt minstens €50 om te investeren</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je begrijpt dat dit geen overnight success is</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je kunt 6 maanden consistent werken</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je wilt echte waarde leveren aan bedrijven</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+              <AlertCircle className="w-5 h-5 mr-2 text-red-400" />
+              Dit is NIET Voor Jou Als:
+            </h3>
+            <div className="space-y-3 text-sm text-gray-300">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je hebt €0 op je rekening staan</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je zoekt 'passive income' zonder werk</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je wilt binnen een maand resultaten</span>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span>Je kunt geen 'nee' van prospects hanteren</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Community invitation (not sales pitch) */}
+        <div className="bg-gradient-to-br from-purple-900/50 to-cyan-900/50 backdrop-blur-3xl border border-purple-500/50 rounded-3xl p-8 text-center shadow-2xl">
+          <h3 className="text-3xl font-black mb-4 text-white">Word De Tweede Succesvolle Partner</h3>
+          <p className="text-xl text-purple-200 mb-8">
+            Onze eerste partner verdient €2.500/maand. Het is bewezen dat het werkt. De vraag is: ben jij de volgende?
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+              <div className="text-2xl font-bold text-purple-400 mb-2">€47</div>
+              <div className="text-white text-sm">Per maand</div>
+              <div className="text-xs text-gray-400 mt-1">Community toegang</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+              <div className="text-2xl font-bold text-cyan-400 mb-2">100%</div>
+              <div className="text-white text-sm">Whitelabel</div>
+              <div className="text-xs text-gray-400 mt-1">Jouw merk, jouw klanten</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+              <div className="text-2xl font-bold text-pink-400 mb-2">Echt</div>
+              <div className="text-white text-sm">Support</div>
+              <div className="text-xs text-gray-400 mt-1">Wekelijkse calls</div>
+            </div>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 mb-6">
+            <div className="text-center">
+              <div className="text-lg font-bold text-white mb-2">Klaar om te starten?</div>
+              <div className="text-gray-300 text-sm mb-4">Stuur me het woord hieronder via WhatsApp:</div>
+              
+              <div className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border-2 border-purple-500/50 rounded-xl p-4 mb-4">
+                <div className="text-3xl font-black text-white mb-2">PARTNER</div>
+                <div className="text-xs text-gray-300">Kopieer en plak dit woord in WhatsApp</div>
+              </div>
+              
+              <a 
+                href="https://wa.me/31616834455?text=PARTNER" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white hover:text-white font-bold py-4 px-8 rounded-2xl text-lg transform hover:scale-105 transition-all shadow-2xl mb-4"
+              >
+                📱 Open WhatsApp & Stuur "PARTNER"
+              </a>
+            </div>
+          </div>
+          
+          <p className="text-sm text-purple-200 mb-4">
+            Eerlijk: Ik verwacht dat de meeste mensen dit niet zullen doen. En dat is prima.
+          </p>
+          
+          <div className="text-gray-400 text-sm">
+            Na je bericht krijg je direct toegang tot:<br/>
+            • Complete partner onboarding<br/>
+            • Whitelabel software demo<br/>
+            • Eerste maand strategie call
+          </div>
+        </div>
+      </div>
+      
+      <Footer />
+    </div>
+  );
 
 };
 
