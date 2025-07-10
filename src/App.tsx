@@ -229,7 +229,7 @@ const DMChampFunnel = () => {
                   
                   <h2 className="text-2xl font-bold text-white mb-3">€2.500/Maand. Bewezen. Echt.</h2>
                   <p className="text-gray-300 text-sm mb-4">
-                    <strong>Geen bullshit. Geen valse beloftes.</strong> Ik laat je de bankafschriften zien van mijn partner.
+                    <strong>Geen onzin. Geen valse beloftes.</strong> Ik laat je de bankafschriften zien van mijn partner.
                   </p>
 
                   <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-xl border border-red-500/50 rounded-2xl p-4 mb-4">
@@ -274,7 +274,7 @@ const DMChampFunnel = () => {
                   <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-purple-500/50 transition-all">
                     <input
                       type="text"
-                      placeholder="Je voornaam"
+                      placeholder="Jouw voornaam"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
@@ -286,7 +286,7 @@ const DMChampFunnel = () => {
                   <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-purple-500/50 transition-all">
                     <input
                       type="email"
-                      placeholder="Je email adres"
+                      placeholder="Jouw email adres"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -297,7 +297,7 @@ const DMChampFunnel = () => {
 
                   <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-purple-500/50 transition-all">
                     <PhoneInput
-                      placeholder="Je telefoonnummer"
+                      placeholder="Jouw telefoonnummer"
                       value={phone}
                       onChange={setPhone}
                       defaultCountry="NL"
@@ -518,7 +518,7 @@ const DMChampFunnel = () => {
 
           <div className="text-center">
             <p className="text-gray-300 text-lg mb-4">
-              Geen verkoop tactieken. Geen nep urgentie. Gewoon mijn verhaal en waarom ik nu een tweede partner zoek.
+              Geen verkooptactieken. Geen nep urgentie. Gewoon mijn verhaal en waarom ik nu een tweede partner zoek.
             </p>
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
               <div className="flex items-center">
@@ -547,19 +547,19 @@ const DMChampFunnel = () => {
             <div className="space-y-3 text-sm text-gray-300">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je hebt minstens €50 om te investeren</span>
+                <span>Jij hebt minstens €50 om te investeren</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je begrijpt dat dit geen overnight success is</span>
+                <span>Jij begrijpt dat dit geen direct succes is</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je kunt 6 maanden consistent werken</span>
+                <span>Jij kunt 6 maanden consistent werken</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je wilt echte waarde leveren aan bedrijven</span>
+                <span>Jij wilt echte waarde leveren aan bedrijven</span>
               </div>
             </div>
           </div>
@@ -572,19 +572,19 @@ const DMChampFunnel = () => {
             <div className="space-y-3 text-sm text-gray-300">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je hebt €0 op je rekening staan</span>
+                <span>Jij hebt €0 op jouw rekening staan</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je zoekt 'passive income' zonder werk</span>
+                <span>Jij zoekt 'passief inkomen' zonder werk</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je wilt binnen een maand resultaten</span>
+                <span>Jij wilt binnen een maand resultaten</span>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Je kunt geen 'nee' van prospects hanteren</span>
+                <span>Jij kunt geen 'nee' van prospects hanteren</span>
               </div>
             </div>
           </div>
