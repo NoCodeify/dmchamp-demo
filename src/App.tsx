@@ -488,7 +488,7 @@ const DMChampFunnel = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-6 py-3 mb-8 shadow-2xl">
             <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse mr-3"></div>
-            <span className="text-white font-medium">Hoi {name}, hier is waarom dit video bestaat...</span>
+            <span className="text-white font-medium">Hoi {name}, hier is waarom deze video bestaat...</span>
           </div>
           
             <h1 className="text-4xl lg:text-5xl font-black mb-6 text-white">
