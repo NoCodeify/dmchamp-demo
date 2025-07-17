@@ -441,19 +441,9 @@ const LeadCapture: React.FC = () => {
             transition: background-color 5000s ease-in-out 0s !important;
           }
           
-          /* Increased word-spacing for all text */
-          * {
-            word-spacing: 0.1em !important;
-          }
-          
           /* Extra word spacing for headings */
           h1, h2, h3, h4, h5, h6 {
-            word-spacing: 0.15em !important;
-          }
-          
-          /* Button text word spacing */
-          button, .button {
-            word-spacing: 0.12em !important;
+            word-spacing: 0.1em !important;
           }
         `
       }} />
@@ -462,7 +452,6 @@ const LeadCapture: React.FC = () => {
           /* Global autofill override - nuclear option */
           * {
             -webkit-box-shadow: none !important;
-            word-spacing: 0.1em !important;
           }
           *:-webkit-autofill,
           *:-webkit-autofill:hover,

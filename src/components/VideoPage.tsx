@@ -326,19 +326,9 @@ const VideoPage: React.FC = () => {
             padding-top: 56.25%; 
           }
           
-          /* Increased word-spacing for all text */
-          * {
-            word-spacing: 0.1em !important;
-          }
-          
           /* Extra word spacing for headings */
           h1, h2, h3, h4, h5, h6 {
-            word-spacing: 0.15em !important;
-          }
-          
-          /* Button text word spacing */
-          button, .button {
-            word-spacing: 0.12em !important;
+            word-spacing: 0.1em !important;
           }
         `
       }} />
