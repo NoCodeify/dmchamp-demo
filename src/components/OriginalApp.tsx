@@ -4,6 +4,18 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import Footer from './Footer';
 
+// TypeScript declaration for Wistia player
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'media-id': string;
+        aspect?: string;
+      };
+    }
+  }
+}
+
 // Meta Pixel utilities
 declare global {
   interface Window {
@@ -82,6 +94,26 @@ const OriginalDMChampFunnel = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState<string | undefined>('+31');
+
+  // Load Wistia player scripts
+  useEffect(() => {
+    const script1 = document.createElement('script');
+    script1.src = 'https://fast.wistia.com/player.js';
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.src = 'https://fast.wistia.com/embed/daai3juhjx.js';
+    script2.async = true;
+    script2.type = 'module';
+    document.head.appendChild(script2);
+
+    return () => {
+      // Cleanup scripts on unmount
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [eventId, setEventId] = useState<string>('');
   const [trackingData, setTrackingData] = useState<Record<string, unknown>>({});
@@ -834,17 +866,12 @@ const OriginalDMChampFunnel = () => {
 
         {/* Authentic story-driven VSL */}
         <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">
-          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.775926' }}>
-            <iframe
-              src="https://embed.voomly.com/embed/assets/embed.html?videoId=BojbJA4KXK7IxxxxCBGQr5raGMDBEyGhmN5UxgIoXJLocH86Z&videoRatio=1.775926&type=v&skinColor=rgba(37%2C211%2C102%2C1)"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full rounded-2xl"
-              style={{
-                border: 'none'
-              }}
-            />
+          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.7777777777777777' }}>
+            {React.createElement('wistia-player', {
+              'media-id': 'daai3juhjx',
+              'aspect': '1.7777777777777777',
+              className: 'absolute inset-0 w-full h-full rounded-2xl'
+            })}
           </div>
 
           <div className="text-center">
@@ -981,6 +1008,32 @@ const OriginalDMChampFunnel = () => {
       </div>
       
       <Footer />
+      
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          wistia-player[media-id='daai3juhjx']:not(:defined) { 
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/daai3juhjx/swatch'); 
+            display: block; 
+            filter: blur(5px); 
+            padding-top: 56.25%; 
+          }
+          
+          /* Increased word-spacing for all text */
+          * {
+            word-spacing: 0.1em !important;
+          }
+          
+          /* Extra word spacing for headings */
+          h1, h2, h3, h4, h5, h6 {
+            word-spacing: 0.15em !important;
+          }
+          
+          /* Button text word spacing */
+          button, .button {
+            word-spacing: 0.12em !important;
+          }
+        `
+      }} />
     </div>
   );
 };
