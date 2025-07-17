@@ -17,6 +17,9 @@ declare global {
 const VideoPage: React.FC = () => {
 
   useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+    
     // Load Wistia player scripts
     const script1 = document.createElement('script');
     script1.src = 'https://fast.wistia.com/player.js';
