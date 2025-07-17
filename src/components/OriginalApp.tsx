@@ -39,10 +39,29 @@ const getUTMParameters = () => {
   };
 };
 
-// Utility to get Facebook Click ID from URL
+// Utility to get Facebook Click ID - check _fbc cookie first, then URL
 const getFacebookClickId = () => {
+  // First, try to get _fbc cookie (already properly formatted)
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === '_fbc' && value) {
+      return value;
+    }
+  }
+  
+  // Fallback: get from URL and format properly
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get('fbclid') || '';
+  const fbclid = urlParams.get('fbclid');
+  
+  if (!fbclid) {
+    return '';
+  }
+  
+  // Format as fb.{subdomainIndex}.{timestamp}.{fbclid}
+  // Use subdomain index 1 and current timestamp
+  const timestamp = Math.floor(Date.now() / 1000);
+  return `fb.1.${timestamp}.${fbclid}`;
 };
 
 // Utility to get Facebook Browser ID from cookies
