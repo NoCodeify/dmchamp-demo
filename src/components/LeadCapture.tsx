@@ -207,107 +207,8 @@ const LeadCapture: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Left: Simple opportunity */}
-          <div className="space-y-8">
-            {/* What you'll learn */}
-            <div className="bg-blue-500/10 backdrop-blur-3xl border border-blue-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
-              <h3 className="text-xl font-bold text-blue-300 mb-4">In Deze 15-Minuten Presentatie Ontdek Je:</h3>
-              
-              <div className="space-y-4 text-gray-300">
-                <div className="space-y-3">
-                  <div className="flex items-start text-left">
-                    <MessageCircle className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
-                    <span className="text-sm"><strong>Minuut 3:47</strong> - Het exacte WhatsApp gesprek dat een €40.000 deal sloot (terwijl de eigenaar thuis was)</span>
-                  </div>
-                  <div className="flex items-start text-left">
-                    <TrendingUp className="w-4 h-4 text-yellow-400 mt-1 mr-3 flex-shrink-0" />
-                    <span className="text-sm"><strong>Minuut 7:15</strong> - Waarom ik op mijn 17e al €30.000 per maand verdiende (en wat dit met jouw business te maken heeft)</span>
-                  </div>
-                  <div className="flex items-start text-left">
-                    <Target className="w-4 h-4 text-purple-400 mt-1 mr-3 flex-shrink-0" />
-                    <span className="text-sm"><strong>Minuut 11:23</strong> - De 3-stappen setup die je business automatiseert in letterlijk 5 minuten</span>
-                  </div>
-                  <div className="flex items-start text-left">
-                    <Users className="w-4 h-4 text-cyan-400 mt-1 mr-3 flex-shrink-0" />
-                    <span className="text-sm"><strong>Minuut 13:45</strong> - Live voorbeelden: van fietsenmaker tot online coach</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Not for everyone section */}
-            <div className="bg-orange-500/10 backdrop-blur-3xl border border-orange-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-orange-500/20 transition-all duration-300">
-              <h3 className="text-xl font-bold text-orange-300 mb-4">Dit Is Niet Voor Iedereen:</h3>
-              
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-red-300 font-semibold mb-2 text-left">NIET kijken als je:</h4>
-                  <div className="space-y-2 text-sm text-gray-300">
-                    <div className="flex items-start text-left">
-                      <Users className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Geen bestaande klantenstroom hebt</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <Clock className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Tevreden bent met 60+ uur werken</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <Eye className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Denkt dat AI "onpersoonlijk" is</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <ThumbsDown className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Vindt dat dit soort voordelen "oneerlijk" zijn</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 className="text-green-300 font-semibold mb-2 text-left">WEL kijken als je:</h4>
-                  <div className="space-y-2 text-sm text-gray-300">
-                    <div className="flex items-start text-left">
-                      <Zap className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Een oneerlijk voordeel wilt (en daar OK mee bent)</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <Clock className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Eindelijk je avonden terug wilt</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <TrendingUp className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Klaar bent om meer te verdienen met minder werk</span>
-                    </div>
-                    <div className="flex items-start text-left">
-                      <ThumbsUp className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
-                      <span>Begrijpt dat "eerst komen, eerst malen" vooral met technologie geldt</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* AI truth section */}
-            <div className="bg-purple-500/10 backdrop-blur-3xl border border-purple-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
-              <h3 className="text-xl font-bold text-purple-300 mb-4">De Waarheid Over AI in 2025:</h3>
-              
-              <div className="space-y-3 text-gray-300">
-                <p className="text-sm text-left">Het CBS meldt: <span className="text-blue-300 font-semibold">25% van bedrijven gebruikt nu AI</span>.</p>
-                <p className="text-sm text-left">De Universiteit van Amsterdam voorspelt: in 2030 wordt <span className="text-yellow-300 font-semibold">67% van het werk door AI gedaan</span>.</p>
-                <p className="text-sm text-left">De EU onderzoekt al of AI systemen zoals deze <span className="text-red-300 font-semibold">"te veel voordeel" geven</span>.</p>
-                
-                <div className="bg-white/10 border border-white/20 rounded-2xl p-4 mt-4">
-                  <p className="text-white font-semibold text-sm mb-2 text-left">Dit is geen toekomstmuziek. Dit gebeurt NU.</p>
-                  <p className="text-gray-300 text-sm text-left">En terwijl jij twijfelt, implementeren je concurrenten het al.</p>
-                </div>
-                
-                <p className="text-red-300 font-semibold text-sm italic mt-4 text-center">"Als iedereen dit zou gebruiken, zou de hele marketing industrie instorten."</p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right: Honest lead capture */}
-          <div className="sticky top-8">
+          {/* Right: Honest lead capture - First on mobile */}
+          <div className="lg:order-2">
             <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 shadow-2xl hover:shadow-white/10 transition-all duration-300">
               <div className="text-center mb-6">
                 <div className="inline-flex items-center bg-green-500/20 border border-green-500/50 rounded-full px-4 py-2 mb-4">
@@ -446,6 +347,106 @@ const LeadCapture: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* Left: Simple opportunity - Second on mobile */}
+          <div className="lg:order-1 space-y-8">
+            {/* What you'll learn */}
+            <div className="bg-blue-500/10 backdrop-blur-3xl border border-blue-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+              <h3 className="text-xl font-bold text-blue-300 mb-4">In Deze 15-Minuten Presentatie Ontdek Je:</h3>
+              
+              <div className="space-y-4 text-gray-300">
+                <div className="space-y-3">
+                  <div className="flex items-start text-left">
+                    <MessageCircle className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                    <span className="text-sm"><strong>Minuut 3:47</strong> - Het exacte WhatsApp gesprek dat een €40.000 deal sloot (terwijl de eigenaar thuis was)</span>
+                  </div>
+                  <div className="flex items-start text-left">
+                    <TrendingUp className="w-4 h-4 text-yellow-400 mt-1 mr-3 flex-shrink-0" />
+                    <span className="text-sm"><strong>Minuut 7:15</strong> - Waarom ik op mijn 17e al €30.000 per maand verdiende (en wat dit met jouw business te maken heeft)</span>
+                  </div>
+                  <div className="flex items-start text-left">
+                    <Target className="w-4 h-4 text-purple-400 mt-1 mr-3 flex-shrink-0" />
+                    <span className="text-sm"><strong>Minuut 11:23</strong> - De 3-stappen setup die je business automatiseert in letterlijk 5 minuten</span>
+                  </div>
+                  <div className="flex items-start text-left">
+                    <Users className="w-4 h-4 text-cyan-400 mt-1 mr-3 flex-shrink-0" />
+                    <span className="text-sm"><strong>Minuut 13:45</strong> - Live voorbeelden: van fietsenmaker tot online coach</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Not for everyone section */}
+            <div className="bg-orange-500/10 backdrop-blur-3xl border border-orange-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-orange-500/20 transition-all duration-300">
+              <h3 className="text-xl font-bold text-orange-300 mb-4">Dit Is Niet Voor Iedereen:</h3>
+              
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-red-300 font-semibold mb-2 text-left">NIET kijken als je:</h4>
+                  <div className="space-y-2 text-sm text-gray-300">
+                    <div className="flex items-start text-left">
+                      <Users className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Geen bestaande klantenstroom hebt</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <Clock className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Tevreden bent met 60+ uur werken</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <Eye className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Denkt dat AI "onpersoonlijk" is</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <ThumbsDown className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Vindt dat dit soort voordelen "oneerlijk" zijn</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="text-green-300 font-semibold mb-2 text-left">WEL kijken als je:</h4>
+                  <div className="space-y-2 text-sm text-gray-300">
+                    <div className="flex items-start text-left">
+                      <Zap className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Een oneerlijk voordeel wilt (en daar OK mee bent)</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <Clock className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Eindelijk je avonden terug wilt</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <TrendingUp className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Klaar bent om meer te verdienen met minder werk</span>
+                    </div>
+                    <div className="flex items-start text-left">
+                      <ThumbsUp className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      <span>Begrijpt dat "eerst komen, eerst malen" vooral met technologie geldt</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* AI truth section */}
+            <div className="bg-purple-500/10 backdrop-blur-3xl border border-purple-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
+              <h3 className="text-xl font-bold text-purple-300 mb-4">De Waarheid Over AI in 2025:</h3>
+              
+              <div className="space-y-3 text-gray-300">
+                <p className="text-sm text-left">Het CBS meldt: <span className="text-blue-300 font-semibold">25% van bedrijven gebruikt nu AI</span>.</p>
+                <p className="text-sm text-left">De Universiteit van Amsterdam voorspelt: in 2030 wordt <span className="text-yellow-300 font-semibold">67% van het werk door AI gedaan</span>.</p>
+                <p className="text-sm text-left">De EU onderzoekt al of AI systemen zoals deze <span className="text-red-300 font-semibold">"te veel voordeel" geven</span>.</p>
+                
+                <div className="bg-white/10 border border-white/20 rounded-2xl p-4 mt-4">
+                  <p className="text-white font-semibold text-sm mb-2 text-left">Dit is geen toekomstmuziek. Dit gebeurt NU.</p>
+                  <p className="text-gray-300 text-sm text-left">En terwijl jij twijfelt, implementeren je concurrenten het al.</p>
+                </div>
+                
+                <p className="text-red-300 font-semibold text-sm italic mt-4 text-center">"Als iedereen dit zou gebruiken, zou de hele marketing industrie instorten."</p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
