@@ -204,43 +204,6 @@ const LeadCapture: React.FC = () => {
             <span className="text-white font-bold">(Maar Is 100% Legaal... Nog. Gebruik Het Nu Het Nog Mag)</span>
           </p>
           
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
-            <p className="text-lg font-semibold text-cyan-300 mb-6 text-left">Een persoonlijk bericht van Sohaib (26):</p>
-            
-            <p className="text-gray-300 mb-4 text-left">Ik weet wat je denkt...</p>
-            
-            <p className="text-white italic mb-6 text-left">"Wat kan deze jonge gast mij nou leren over business?"</p>
-            
-            <p className="text-gray-300 mb-6 text-left">Fair enough. Maar voordat je wegklikt, laat me je één ding vragen:</p>
-            
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6">
-              <p className="text-yellow-300 font-semibold text-lg mb-4 text-center">Check jij ook je WhatsApp tijdens het avondeten?</p>
-              
-              <div className="space-y-2 text-gray-300">
-                <p className="text-left">Mis je schoolvoorstellingen omdat er "nog even iets moet"?</p>
-                <p className="text-left">Beloof je "ik ben er over 10 minuten" om dan 2 uur later te verschijnen?</p>
-              </div>
-              
-              <p className="text-white mt-4 text-left">Als je ja zegt... dan herken ik je situatie. Want dit zie ik bij 90% van de ondernemers die ik help.</p>
-            </div>
-          </div>
-          
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="bg-red-500/10 backdrop-blur-xl border border-red-500/30 rounded-3xl p-8">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">Je Bent Niet Lui. Het Systeem Is Kapot.</h2>
-              
-              <div className="space-y-4 text-gray-300">
-                <p className="text-left">Elke gemiste lead kost je €80 tot €1000.</p>
-                <p className="text-left">Elke trage reactie vermindert je conversiekans met <span className="text-red-400 font-bold">21x (!)</span>.</p>
-                <p className="text-left">En terwijl jij 's avonds nog berichten beantwoordt...</p>
-              </div>
-              
-              <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-2xl p-6 mt-6">
-                <p className="text-xl font-bold text-white mb-2 text-center">...groeide FueGenix van €5 naar €8 miljoen in 240 dagen.</p>
-                <p className="text-green-300 text-left">De eigenaar? Die werkt nu <span className="font-bold">3 dagen per week</span>.</p>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
