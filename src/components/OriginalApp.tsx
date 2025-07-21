@@ -4,17 +4,6 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import Footer from './Footer';
 
-// TypeScript declaration for Wistia player
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'media-id': string;
-        aspect?: string;
-      };
-    }
-  }
-}
 
 // Meta Pixel utilities
 declare global {
@@ -114,23 +103,16 @@ const OriginalDMChampFunnel = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState<string | undefined>('+31');
 
-  // Load Wistia player scripts
+  // Load Voomly player script
   useEffect(() => {
-    const script1 = document.createElement('script');
-    script1.src = 'https://fast.wistia.com/player.js';
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.src = 'https://fast.wistia.com/embed/daai3juhjx.js';
-    script2.async = true;
-    script2.type = 'module';
-    document.head.appendChild(script2);
+    const script = document.createElement('script');
+    script.src = 'https://embed.voomly.com/embed/embed-build.js';
+    script.async = true;
+    document.head.appendChild(script);
 
     return () => {
-      // Cleanup scripts on unmount
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
+      // Cleanup script on unmount
+      document.head.removeChild(script);
     };
   }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -885,12 +867,16 @@ const OriginalDMChampFunnel = () => {
 
         {/* Authentic story-driven VSL */}
         <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">
-          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.7777777777777777' }}>
-            {React.createElement('wistia-player', {
-              'media-id': 'daai3juhjx',
-              'aspect': '1.7777777777777777',
-              className: 'absolute inset-0 w-full h-full rounded-2xl'
-            })}
+          <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-6 border border-white/10" style={{ aspectRatio: '1.777778' }}>
+            <div 
+              className="voomly-embed absolute inset-0 w-full h-full rounded-2xl" 
+              data-id="x6-RLg9cnUQPU_JYBfBvNE88VGAUpw5j9hNvSVS8fzrICF8MA" 
+              data-ratio="1.777778" 
+              data-type="v" 
+              data-skin-color="rgba(37,211,102,1)" 
+              data-shadow="" 
+              style={{ width: '100%', aspectRatio: '1.77778 / 1', background: 'linear-gradient(45deg, rgb(142, 150, 164) 0%, rgb(201, 208, 222) 100%)', borderRadius: '10px' }}
+            />
           </div>
 
           <div className="text-center">
@@ -1030,13 +1016,6 @@ const OriginalDMChampFunnel = () => {
       
       <style dangerouslySetInnerHTML={{
         __html: `
-          wistia-player[media-id='daai3juhjx']:not(:defined) { 
-            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/daai3juhjx/swatch'); 
-            display: block; 
-            filter: blur(5px); 
-            padding-top: 56.25%; 
-          }
-          
           /* Extra word spacing for headings */
           h1, h2, h3, h4, h5, h6 {
             word-spacing: 0.1em !important;
