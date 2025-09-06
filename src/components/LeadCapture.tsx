@@ -4,6 +4,7 @@ import { ArrowRight, Shield, CheckCircle, MessageCircle, TrendingUp, Target, Use
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import Footer from './Footer';
+import VideoPage from './VideoPage';
 
 // Meta Pixel utilities
 declare global {
@@ -120,19 +121,6 @@ const LeadCapture: React.FC = () => {
     });
   }, []);
   
-  // Load Voomly script when showing video only
-  useEffect(() => {
-    if (showVideoOnly) {
-      const script = document.createElement('script');
-      script.src = 'https://embed.voomly.com/embed/embed-build.js';
-      script.async = true;
-      document.head.appendChild(script);
-      
-      return () => {
-        document.head.removeChild(script);
-      };
-    }
-  }, [showVideoOnly]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -202,32 +190,9 @@ const LeadCapture: React.FC = () => {
     setIsSubmitting(false);
   };
 
-  // If ?video query parameter is present, show only the video
+  // If ?video query parameter is present, show the full video page content
   if (showVideoOnly) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="relative max-w-4xl mx-auto px-4 py-16">
-          <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-3xl p-2 sm:p-8 shadow-2xl">
-            <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl overflow-hidden mb-4 sm:mb-6 border border-white/10" style={{ aspectRatio: '1.777778' }}>
-              <div 
-                className="voomly-embed absolute inset-0 w-full h-full rounded-2xl" 
-                data-id="x6-RLg9cnUQPU_JYBfBvNE88VGAUpw5j9hNvSVS8fzrICF8MA" 
-                data-ratio="1.777778" 
-                data-type="v" 
-                data-skin-color="rgba(37,211,102,1)" 
-                data-shadow="" 
-                style={{ width: '100%', aspectRatio: '1.77778 / 1', background: 'linear-gradient(45deg, rgb(142, 150, 164) 0%, rgb(201, 208, 222) 100%)', borderRadius: '10px' }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <VideoPage />;
   }
   
   return (
